@@ -1,0 +1,2514 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevUI CSS Library - Comprehensive Component Documentation</title>
+  <link rel="stylesheet" href="devui-library.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .demo-section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .demo-title {
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+    }
+    .demo-description {
+      color: var(--gray-600);
+      margin-bottom: 1.5rem;
+      font-size: var(--font-size-lg);
+    }
+    .code-example {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: var(--border-radius-md);
+      font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-x: auto;
+      margin: 1rem 0;
+      border: 1px solid #333;
+      position: relative;
+    }
+    .code-example::before {
+      content: 'HTML';
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .code-example.css::before {
+      content: 'CSS';
+    }
+    /* Syntax highlighting for HTML/CSS */
+    .code-tag { color: #569cd6; }
+    .code-attr { color: #9cdcfe; }
+    .code-string { color: #ce9178; }
+    .code-comment { color: #6a9955; }
+    .code-property { color: #9cdcfe; }
+    .code-value { color: #ce9178; }
+    .demo-grid {
+      display: grid;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .demo-grid-2 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .demo-grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .demo-grid-4 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    .sidebar-nav {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 260px;
+      height: 100vh;
+      background: var(--gray-900);
+      color: var(--white);
+      padding: 2rem 1rem;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    .sidebar-nav .navbar-brand {
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+    .sidebar-nav a {
+      display: block;
+      color: var(--gray-300);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius-md);
+      margin-bottom: 0.25rem;
+      transition: all var(--transition-base);
+    }
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+    .main-content {
+      margin-left: 260px;
+      padding: 2rem;
+    }
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #667eea 100%);
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+      border-radius: var(--border-radius-lg);
+      margin-bottom: 3rem;
+    }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    .installation-code {
+      background: var(--gray-800);
+      color: var(--white);
+      padding: 1rem;
+      border-radius: var(--border-radius-md);
+      font-family: var(--font-family-mono);
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .sidebar-nav {
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+      }
+      .sidebar-nav.show {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="devui-library">
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar-nav">
+    <div class="navbar-brand">DevUI CSS</div>
+    <a href="#getting-started" class="active">Getting Started</a>
+    <a href="#examples">HTML Examples</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#cards">Cards</a>
+    <a href="#forms">Forms</a>
+    <a href="#modals">Modals</a>
+    <a href="#alerts">Alerts</a>
+    <a href="#navigation">Navigation</a>
+    <a href="#grid">Grid System</a>
+    <a href="#avatars">Avatars</a>
+    <a href="#badges">Badges</a>
+    <a href="#progress">Progress</a>
+    <a href="#tables">Tables</a>
+    <a href="#dropdowns">Dropdowns</a>
+    <a href="#tabs">Tabs</a>
+    <a href="#toasts">Toasts</a>
+    <a href="#tooltips">Tooltips</a>
+    <a href="#accordions">Accordions</a>
+    <a href="#breadcrumbs">Breadcrumbs</a>
+    <a href="#pagination">Pagination</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#steppers">Steppers</a>
+    <a href="#file-upload">File Upload</a>
+    <a href="#rating">Rating</a>
+    <a href="#toggle">Toggle Switch</a>
+    <a href="#chips">Chips</a>
+    <a href="#skeleton">Skeleton Loader</a>
+    <a href="#pricing">Pricing Cards</a>
+    <a href="#progress">Progress Bars</a>
+    <a href="#badges">Badges</a>
+    <a href="#loading">Loading States</a>
+    <a href="#data-table">Data Tables</a>
+    <a href="#feature-cards">Feature Cards</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#image-gallery">Image Gallery</a>
+    <a href="#stats-cards">Stats Cards</a>
+    <a href="#comparison">Comparison Table</a>
+    <a href="#calendar">Calendar</a>
+    <a href="#timeline-enhanced">Enhanced Timeline</a>
+    <a href="#dashboard">Dashboard Widgets</a>
+    <a href="#card-overlays">Card Overlays</a>
+    <a href="#hero-sections">Hero Sections</a>
+    <a href="#headers">Headers</a>
+    <a href="#footers">Footers</a>
+    <a href="#utilities">Utilities</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1 class="hero-title">DevUI CSS Library</h1>
+      <p class="hero-subtitle">A comprehensive, developer-friendly CSS component library for modern web applications</p>
+      <div class="installation-code">
+        <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-string">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-string">"https://cdn.jsdelivr.net/gh/anvithshetty17/devui-css-library/devui-library.css"</span><span class="code-tag">&gt;</span>
+      </div>
+      <div style="margin-top: 2rem;">
+        <a href="#getting-started" class="btn btn-lg" style="background: white; color: var(--primary-color);">Get Started</a>
+        <a href="https://github.com/anvithshetty17/devui-css-library" class="btn btn-lg btn-outline" style="border-color: white; color: white; margin-left: 1rem;">View on GitHub</a>
+      </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section id="getting-started" class="demo-section">
+      <h2 class="demo-title">Getting Started</h2>
+      <p class="demo-description">DevUI is a modern CSS component library that provides ready-to-use components for building beautiful web interfaces quickly and efficiently.</p>
+      
+      <h3>Installation</h3>
+      <p>Add DevUI to your project by including the CSS file in your HTML head:</p>
+      <div class="code-example">
+<span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-string">"en"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-string">"UTF-8"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"viewport"</span> <span class="code-attr">content</span>=<span class="code-string">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;title&gt;</span>My App<span class="code-tag">&lt;/title&gt;</span>
+  <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-string">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-string">"devui-library.css"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+  <span class="code-comment">&lt;!-- Your content here --&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span>
+      </div>
+
+      <h3>Preventing Style Conflicts</h3>
+      <p>To prevent external CSS from affecting DevUI components, wrap your content in the <code>devui-library</code> class:</p>
+      <div class="code-example">
+<span class="code-tag">&lt;body</span> <span class="code-attr">class</span>=<span class="code-string">"devui-library"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Protected Button<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"chip chip-success"</span><span class="code-tag">&gt;</span>Protected Chip<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+      </div>
+      
+      <h3>Customization</h3>
+      <p>DevUI uses CSS custom properties (variables) for easy customization. Override these variables to match your brand:</p>
+      <div class="code-example css">
+<span class="code-property">:root</span> {
+  <span class="code-comment">/* Colors */</span>
+  <span class="code-attr">--primary-color</span>: <span class="code-value">#your-brand-color</span>;
+  <span class="code-attr">--font-family-base</span>: <span class="code-value">'Your Font', sans-serif</span>;
+  <span class="code-attr">--border-radius-md</span>: <span class="code-value">8px</span>;
+  <span class="code-comment">/* Override any variable you need */</span>
+}
+      </div>
+    </section>
+
+    <!-- Formatted Examples -->
+    <section id="examples" class="demo-section">
+      <h2 class="demo-title">Formatted HTML Examples</h2>
+      <p class="demo-description">Copy-paste ready HTML examples with proper formatting and indentation.</p>
+      
+      <h3>Alert Messages</h3>
+      <div class="demo-grid demo-grid-2">
+        <div class="alert alert-success">
+          <strong>Success!</strong> Your changes have been saved.
+        </div>
+        <div class="alert alert-error">
+          <strong>Error:</strong> Something went wrong.
+        </div>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"alert alert-success"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;strong&gt;</span>Success!<span class="code-tag">&lt;/strong&gt;</span> Your changes have been saved.
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"alert alert-error"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;strong&gt;</span>Error:<span class="code-tag">&lt;/strong&gt;</span> Something went wrong.
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+
+      <h3>Complete Card Structure</h3>
+      <div class="demo-grid demo-grid-2">
+        <div class="card">
+          <div class="card-header">Product Card</div>
+          <div class="card-body">
+            <p>This is a complete card with all sections properly formatted.</p>
+            <button class="btn btn-primary">Learn More</button>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-header"</span><span class="code-tag">&gt;</span>Product Card<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-body"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>This is a complete card with all sections properly formatted.<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Learn More<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-footer"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;small</span> <span class="code-attr">class</span>=<span class="code-string">"text-muted"</span><span class="code-tag">&gt;</span>Last updated 3 mins ago<span class="code-tag">&lt;/small&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+
+      <h3>Form with Validation</h3>
+      <div class="demo-grid demo-grid-1">
+        <form class="form">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="Enter your email">
+            <div class="form-help">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-input form-input-error" placeholder="Enter password">
+            <div class="form-error">Password must be at least 8 characters long.</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;form</span> <span class="code-attr">class</span>=<span class="code-string">"form"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"form-group"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;label</span> <span class="code-attr">class</span>=<span class="code-string">"form-label"</span><span class="code-tag">&gt;</span>Email Address<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"email"</span> <span class="code-attr">class</span>=<span class="code-string">"form-input"</span> <span class="code-attr">placeholder</span>=<span class="code-string">"Enter your email"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"form-help"</span><span class="code-tag">&gt;</span>We'll never share your email with anyone else.<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"form-group"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;label</span> <span class="code-attr">class</span>=<span class="code-string">"form-label"</span><span class="code-tag">&gt;</span>Password<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"password"</span> <span class="code-attr">class</span>=<span class="code-string">"form-input form-input-error"</span> <span class="code-attr">placeholder</span>=<span class="code-string">"Enter password"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"form-error"</span><span class="code-tag">&gt;</span>Password must be at least 8 characters long.<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-string">"submit"</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Sign In<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/form&gt;</span>
+      </div>
+
+      <h3>Navigation Bar</h3>
+      <div class="demo-grid demo-grid-1">
+        <nav class="navbar navbar-expand">
+          <div class="navbar-brand">DevUI</div>
+          <div class="navbar-nav">
+            <a href="#" class="nav-link nav-link-active">Home</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Contact</a>
+          </div>
+          <div class="navbar-actions">
+            <button class="btn btn-outline btn-primary">Login</button>
+          </div>
+        </nav>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;nav</span> <span class="code-attr">class</span>=<span class="code-string">"navbar navbar-expand"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-brand"</span><span class="code-tag">&gt;</span>DevUI<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-nav"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"nav-link nav-link-active"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;</span>
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"nav-link"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;</span>
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"nav-link"</span><span class="code-tag">&gt;</span>Contact<span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-actions"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-outline btn-primary"</span><span class="code-tag">&gt;</span>Login<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/nav&gt;</span>
+      </div>
+
+      <h3>Button Combinations</h3>
+      <div class="demo-grid demo-grid-3">
+        <div class="btn-group">
+          <button class="btn btn-outline btn-primary">Left</button>
+          <button class="btn btn-outline btn-primary">Center</button>
+          <button class="btn btn-outline btn-primary">Right</button>
+        </div>
+        <div class="btn-split">
+          <button class="btn btn-primary btn-split-main">Action</button>
+          <button class="btn btn-primary btn-split-dropdown">▼</button>
+        </div>
+        <button class="btn btn-primary btn-with-icon">
+          <span>📧</span><span>Send Email</span>
+        </button>
+      </div>
+      <div class="code-example">
+<span class="code-comment">&lt;!-- Button Group --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"btn-group"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-outline btn-primary"</span><span class="code-tag">&gt;</span>Left<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-outline btn-primary"</span><span class="code-tag">&gt;</span>Center<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-outline btn-primary"</span><span class="code-tag">&gt;</span>Right<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Split Button --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"btn-split"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-split-main"</span><span class="code-tag">&gt;</span>Action<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-split-dropdown"</span><span class="code-tag">&gt;</span>▼<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Button with Icon --&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-with-icon"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;span&gt;</span>📧<span class="code-tag">&lt;/span&gt;</span><span class="code-tag">&lt;span&gt;</span>Send Email<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;/button&gt;</span>
+      </div>
+
+      <h3>Complete Page Layout</h3>
+      <div class="code-example">
+<span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-string">"en"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-string">"UTF-8"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-string">"viewport"</span> <span class="code-attr">content</span>=<span class="code-string">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;title&gt;</span>My App<span class="code-tag">&lt;/title&gt;</span>
+  <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-string">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-string">"devui-library.css"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body</span> <span class="code-attr">class</span>=<span class="code-string">"devui-library"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;header</span> <span class="code-attr">class</span>=<span class="code-string">"header"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;nav</span> <span class="code-attr">class</span>=<span class="code-string">"navbar navbar-expand"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-brand"</span><span class="code-tag">&gt;</span>MyApp<span class="code-tag">&lt;/div&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-nav"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"nav-link"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;</span>
+        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"nav-link"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;</span>
+      <span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;/nav&gt;</span>
+  <span class="code-tag">&lt;/header&gt;</span>
+
+  <span class="code-tag">&lt;main</span> <span class="code-attr">class</span>=<span class="code-string">"container"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"alert alert-success"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;strong&gt;</span>Welcome!<span class="code-tag">&lt;/strong&gt;</span> Thanks for using DevUI.
+    <span class="code-tag">&lt;/div&gt;</span>
+
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-header"</span><span class="code-tag">&gt;</span>Get Started<span class="code-tag">&lt;/div&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-body"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;p&gt;</span>Start building amazing interfaces with DevUI components.<span class="code-tag">&lt;/p&gt;</span>
+        <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Get Started<span class="code-tag">&lt;/button&gt;</span>
+      <span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/main&gt;</span>
+
+  <span class="code-tag">&lt;footer</span> <span class="code-attr">class</span>=<span class="code-string">"footer"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>&copy; 2025 MyApp. All rights reserved.<span class="code-tag">&lt;/p&gt;</span>
+  <span class="code-tag">&lt;/footer&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section id="buttons" class="demo-section">
+      <h2 class="demo-title">Buttons</h2>
+      <p class="demo-description">Comprehensive button collection with 25+ variants, sizes, effects, and interactive states.</p>
+      
+      <h3>Basic Button Variants</h3>
+      <div class="demo-grid demo-grid-4">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-success">Success</button>
+        <button class="btn btn-warning">Warning</button>
+        <button class="btn btn-error">Error</button>
+        <button class="btn btn-outline btn-primary">Outline</button>
+        <button class="btn btn-ghost btn-primary">Ghost</button>
+        <button class="btn btn-disabled">Disabled</button>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Primary<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-outline btn-primary"</span><span class="code-tag">&gt;</span>Outline<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-ghost btn-primary"</span><span class="code-tag">&gt;</span>Ghost<span class="code-tag">&lt;/button&gt;</span>
+      </div>
+
+      <h3>Button Sizes</h3>
+      <div class="d-flex align-items-center" style="gap: 1rem;">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+        <button class="btn btn-primary btn-xl">Extra Large</button>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-sm"</span><span class="code-tag">&gt;</span>Small<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-lg"</span><span class="code-tag">&gt;</span>Large<span class="code-tag">&lt;/button&gt;</span>
+      </div>
+
+      <h3>Floating Action Buttons (FAB)</h3>
+      <div class="d-flex align-items-center" style="gap: 2rem; position: relative; height: 80px;">
+        <button class="btn-fab btn-primary" style="position: static;">+</button>
+        <button class="btn-fab btn-fab-mini btn-success" style="position: static;">✓</button>
+        <button class="btn-fab btn-fab-extended btn-primary" style="position: static;">
+          <span>+</span><span>Create</span>
+        </button>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn-fab btn-primary"</span><span class="code-tag">&gt;</span>+<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn-fab btn-fab-extended btn-primary"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;span&gt;</span>+<span class="code-tag">&lt;/span&gt;</span><span class="code-tag">&lt;span&gt;</span>Create<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;/button&gt;</span>
+      </div>
+
+      <h3>Icon Buttons</h3>
+      <div class="d-flex align-items-center" style="gap: 1rem;">
+        <button class="btn-icon">⚙</button>
+        <button class="btn-icon btn-icon-circle">❤</button>
+        <button class="btn-icon btn-icon-sm">📝</button>
+        <button class="btn-icon btn-icon-lg">🔍</button>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn-icon"</span><span class="code-tag">&gt;</span>⚙<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn-icon btn-icon-circle"</span><span class="code-tag">&gt;</span>❤<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn-icon btn-icon-lg"</span><span class="code-tag">&gt;</span>🔍<span class="code-tag">&lt;/button&gt;</span>
+      </div>
+
+      <h3>Button Groups</h3>
+      <div class="demo-grid demo-grid-2">
+        <div class="btn-group">
+          <button class="btn btn-outline btn-primary">Left</button>
+          <button class="btn btn-outline btn-primary">Center</button>
+          <button class="btn btn-outline btn-primary">Right</button>
+        </div>
+        <div class="btn-group-vertical">
+          <button class="btn btn-outline btn-secondary">Top</button>
+          <button class="btn btn-outline btn-secondary">Middle</button>
+          <button class="btn btn-outline btn-secondary">Bottom</button>
+        </div>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"btn-group"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-outline btn-primary"</span><span class="code-tag">&gt;</span>Left<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-outline btn-primary"</span><span class="code-tag">&gt;</span>Center<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-outline btn-primary"</span><span class="code-tag">&gt;</span>Right<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+
+      <h3>Gradient Buttons</h3>
+      <div class="demo-grid demo-grid-4">
+        <button class="btn btn-gradient">Primary Gradient</button>
+        <button class="btn btn-gradient-success">Success Gradient</button>
+        <button class="btn btn-gradient-warning">Warning Gradient</button>
+        <button class="btn btn-gradient-error">Error Gradient</button>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-gradient"</span><span class="code-tag">&gt;</span>Primary Gradient<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-gradient-success"</span><span class="code-tag">&gt;</span>Success Gradient<span class="code-tag">&lt;/button&gt;</span>
+      </div>
+
+      <h3>Special Effect Buttons</h3>
+      <div class="demo-grid demo-grid-3">
+        <button class="btn btn-neon">Neon Effect</button>
+        <button class="btn btn-glass">Glass Effect</button>
+        <button class="btn btn-3d">3D Effect</button>
+        <button class="btn btn-primary btn-pulse">Pulse Animation</button>
+        <button class="btn btn-primary btn-slide">Slide Effect</button>
+        <button class="btn btn-primary btn-ripple">Ripple Effect</button>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-neon"</span><span class="code-tag">&gt;</span>Neon Effect<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-glass"</span><span class="code-tag">&gt;</span>Glass Effect<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-3d"</span><span class="code-tag">&gt;</span>3D Effect<span class="code-tag">&lt;/button&gt;</span>
+      </div>
+
+      <h3>Social Media Buttons</h3>
+      <div class="demo-grid demo-grid-4">
+        <button class="btn btn-social btn-facebook">Facebook</button>
+        <button class="btn btn-social btn-twitter">Twitter</button>
+        <button class="btn btn-social btn-linkedin">LinkedIn</button>
+        <button class="btn btn-social btn-github">GitHub</button>
+        <button class="btn btn-social btn-google">Google</button>
+        <button class="btn btn-social btn-instagram">Instagram</button>
+        <button class="btn btn-social btn-youtube">YouTube</button>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-social btn-facebook"</span><span class="code-tag">&gt;</span>Facebook<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-social btn-twitter"</span><span class="code-tag">&gt;</span>Twitter<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-social btn-github"</span><span class="code-tag">&gt;</span>GitHub<span class="code-tag">&lt;/button&gt;</span>
+      </div>
+
+      <h3>Interactive Button States</h3>
+      <div class="demo-grid demo-grid-3">
+        <button class="btn btn-toggle">Toggle Button</button>
+        <button class="btn btn-toggle active">Active Toggle</button>
+        <button class="btn btn-primary btn-loading" style="color: transparent;">Loading...</button>
+      </div>
+      <div class="demo-grid demo-grid-2" style="margin-top: 1rem;">
+        <div class="btn-split">
+          <button class="btn btn-primary btn-split-main">Split Button</button>
+          <button class="btn btn-primary btn-split-dropdown">▼</button>
+        </div>
+        <button class="btn btn-primary btn-with-icon">
+          <span>📧</span><span>Send Email</span>
+        </button>
+      </div>
+      <div class="code-example">
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-toggle active"</span><span class="code-tag">&gt;</span>Active Toggle<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-loading"</span><span class="code-tag">&gt;</span>Loading...<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"btn-split"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-split-main"</span><span class="code-tag">&gt;</span>Split Button<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-split-dropdown"</span><span class="code-tag">&gt;</span>▼<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section id="cards" class="demo-section">
+      <h2 class="demo-title">Cards</h2>
+      <p class="demo-description">Flexible content containers with optional headers, bodies, and footers.</p>
+      
+      <div class="demo-grid demo-grid-2">
+        <div class="card">
+          <div class="card-header">Card Title</div>
+          <div class="card-body">
+            <p>This is a basic card with header and body content. Cards are perfect for displaying grouped information.</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">Featured Product</div>
+          <div class="card-body">
+            <h4>Premium Package</h4>
+            <p>Get access to all features with our premium package. Perfect for teams and enterprises.</p>
+            <button class="btn btn-primary">Learn More</button>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Available now</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-header"</span><span class="code-tag">&gt;</span>Card Title<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-body"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Card content goes here...<span class="code-tag">&lt;/p&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-footer"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;small</span> <span class="code-attr">class</span>=<span class="code-string">"text-muted"</span><span class="code-tag">&gt;</span>Footer text<span class="code-tag">&lt;/small&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Forms -->
+    <section id="forms" class="demo-section">
+      <h2 class="demo-title">Forms</h2>
+      <p class="demo-description">Clean and accessible form components with proper validation states.</p>
+      
+      <div class="demo-grid demo-grid-2">
+        <form class="form">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="Enter your email">
+            <div class="form-help">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Your message..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <form class="form">
+          <div class="form-group">
+            <label class="form-label">Small Input</label>
+            <input type="text" class="form-input form-input-sm" placeholder="Small input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Large Input</label>
+            <input type="text" class="form-input form-input-lg" placeholder="Large input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select Option</label>
+            <select class="form-select">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;form</span> <span class="code-attr">class</span>=<span class="code-string">"form"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"form-group"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;label</span> <span class="code-attr">class</span>=<span class="code-string">"form-label"</span><span class="code-tag">&gt;</span>Email<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"email"</span> <span class="code-attr">class</span>=<span class="code-string">"form-input"</span> <span class="code-attr">placeholder</span>=<span class="code-string">"Enter email"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"form-help"</span><span class="code-tag">&gt;</span>Help text goes here<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Submit<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/form&gt;</span>
+      </div>
+    </section>
+
+    <!-- Alerts -->
+    <section id="alerts" class="demo-section">
+      <h2 class="demo-title">Alerts</h2>
+      <p class="demo-description">Contextual feedback messages for typical user actions.</p>
+      
+      <div class="alert alert-success">
+        <strong>Success!</strong> Your changes have been saved successfully.
+      </div>
+      <div class="alert alert-info">
+        <strong>Info:</strong> Here's some helpful information for you.
+      </div>
+      <div class="alert alert-warning">
+        <strong>Warning:</strong> Please check your input and try again.
+      </div>
+      <div class="alert alert-error">
+        <strong>Error:</strong> Something went wrong. Please contact support.
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"alert alert-success"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;strong&gt;</span>Success!<span class="code-tag">&lt;/strong&gt;</span> Your changes have been saved.
+<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"alert alert-error"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;strong&gt;</span>Error:<span class="code-tag">&lt;/strong&gt;</span> Something went wrong.
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section id="navigation" class="demo-section">
+      <h2 class="demo-title">Navigation</h2>
+      <p class="demo-description">Navigation components for organizing your site structure.</p>
+      
+      <nav class="navbar" style="position: relative;">
+        <div class="navbar-brand">Brand</div>
+        <ul class="navbar-nav">
+          <li><a href="#" class="navbar-link active">Home</a></li>
+          <li><a href="#" class="navbar-link">About</a></li>
+          <li><a href="#" class="navbar-link">Services</a></li>
+          <li><a href="#" class="navbar-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;nav</span> <span class="code-attr">class</span>=<span class="code-string">"navbar"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-brand"</span><span class="code-tag">&gt;</span>Brand<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;ul</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-nav"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-link active"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-link"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"navbar-link"</span><span class="code-tag">&gt;</span>Contact<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="code-tag">&lt;/ul&gt;</span>
+<span class="code-tag">&lt;/nav&gt;</span>
+      </div>
+    </section>
+
+    <!-- Grid System -->
+    <section id="grid" class="demo-section">
+      <h2 class="demo-title">Grid System</h2>
+      <p class="demo-description">Responsive 12-column grid system for creating layouts.</p>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <h5>Column 1</h5>
+                <p>md-4</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <h5>Column 2</h5>
+                <p>md-4</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <h5>Column 3</h5>
+                <p>md-4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body text-center">
+                <h5>Half Width</h5>
+                <p>md-6</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body text-center">
+                <h5>Half Width</h5>
+                <p>md-6</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"container"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"row"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"col-md-4"</span><span class="code-tag">&gt;</span>Column 1<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"col-md-4"</span><span class="code-tag">&gt;</span>Column 2<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"col-md-4"</span><span class="code-tag">&gt;</span>Column 3<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Avatars -->
+    <section id="avatars" class="demo-section">
+      <h2 class="demo-title">Avatars</h2>
+      <p class="demo-description">User profile images in various sizes.</p>
+      
+      <div class="d-flex align-items-center" style="gap: 1rem;">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" class="avatar avatar-sm">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avatar" class="avatar">
+        <img src="https://randomuser.me/api/portraits/men/21.jpg" alt="Avatar" class="avatar avatar-lg">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Avatar" class="avatar avatar-xl">
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"avatar.jpg"</span> <span class="code-attr">alt</span>=<span class="code-string">"Avatar"</span> <span class="code-attr">class</span>=<span class="code-string">"avatar avatar-sm"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"avatar.jpg"</span> <span class="code-attr">alt</span>=<span class="code-string">"Avatar"</span> <span class="code-attr">class</span>=<span class="code-string">"avatar"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"avatar.jpg"</span> <span class="code-attr">alt</span>=<span class="code-string">"Avatar"</span> <span class="code-attr">class</span>=<span class="code-string">"avatar avatar-lg"</span><span class="code-tag">&gt;</span>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section id="badges" class="demo-section">
+      <h2 class="demo-title">Badges</h2>
+      <p class="demo-description">Small count and labeling components.</p>
+      
+      <div class="d-flex" style="gap: 1rem; flex-wrap: wrap;">
+        <span class="badge">Default</span>
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-error">Error</span>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"badge badge-primary"</span><span class="code-tag">&gt;</span>Primary<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"badge badge-success"</span><span class="code-tag">&gt;</span>Success<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"badge badge-error"</span><span class="code-tag">&gt;</span>Error<span class="code-tag">&lt;/span&gt;</span>
+      </div>
+    </section>
+
+    <!-- Progress -->
+    <section id="progress" class="demo-section">
+      <h2 class="demo-title">Progress Bars</h2>
+      <p class="demo-description">Show progress and loading states.</p>
+      
+      <div class="progress">
+        <div class="progress-bar" style="width: 25%;"></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" style="width: 50%;"></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" style="width: 75%;"></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" style="width: 100%;"></div>
+      </div>
+      
+      <h3>Spinners</h3>
+      <div class="d-flex align-items-center" style="gap: 1rem;">
+        <div class="spinner spinner-sm"></div>
+        <div class="spinner"></div>
+        <div class="spinner spinner-lg"></div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"progress"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"progress-bar"</span> <span class="code-attr">style</span>=<span class="code-string">"width: 75%;"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"spinner"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Tables -->
+    <section id="tables" class="demo-section">
+      <h2 class="demo-title">Tables</h2>
+      <p class="demo-description">Clean and responsive data tables.</p>
+      
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Doe</td>
+            <td>john@example.com</td>
+            <td>Developer</td>
+            <td><span class="badge badge-success">Active</span></td>
+          </tr>
+          <tr>
+            <td>Jane Smith</td>
+            <td>jane@example.com</td>
+            <td>Designer</td>
+            <td><span class="badge badge-success">Active</span></td>
+          </tr>
+          <tr>
+            <td>Mike Johnson</td>
+            <td>mike@example.com</td>
+            <td>Manager</td>
+            <td><span class="badge badge-warning">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;table</span> <span class="code-attr">class</span>=<span class="code-string">"table table-striped"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;thead&gt;</span>
+    <span class="code-tag">&lt;tr&gt;</span>
+      <span class="code-tag">&lt;th&gt;</span>Name<span class="code-tag">&lt;/th&gt;</span>
+      <span class="code-tag">&lt;th&gt;</span>Email<span class="code-tag">&lt;/th&gt;</span>
+      <span class="code-tag">&lt;th&gt;</span>Role<span class="code-tag">&lt;/th&gt;</span>
+    <span class="code-tag">&lt;/tr&gt;</span>
+  <span class="code-tag">&lt;/thead&gt;</span>
+  <span class="code-tag">&lt;tbody&gt;</span>
+    <span class="code-tag">&lt;tr&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>John Doe<span class="code-tag">&lt;/td&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>john@example.com<span class="code-tag">&lt;/td&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>Developer<span class="code-tag">&lt;/td&gt;</span>
+    <span class="code-tag">&lt;/tr&gt;</span>
+  <span class="code-tag">&lt;/tbody&gt;</span>
+<span class="code-tag">&lt;/table&gt;</span>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section id="tabs" class="demo-section">
+      <h2 class="demo-title">Tabs</h2>
+      <p class="demo-description">Organize content in tabbed interfaces.</p>
+      
+      <div class="tabs">
+        <ul class="tab-list">
+          <li><button class="tab active">Home</button></li>
+          <li><button class="tab">Profile</button></li>
+          <li><button class="tab">Settings</button></li>
+          <li><button class="tab">Contact</button></li>
+        </ul>
+      </div>
+      <div class="tab-content">
+        <div class="tab-panel active">
+          <h3>Home Content</h3>
+          <p>This is the home tab content. You can switch between tabs to see different content.</p>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"tabs"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;ul</span> <span class="code-attr">class</span>=<span class="code-string">"tab-list"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;li&gt;&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"tab active"</span><span class="code-tag">&gt;</span>Tab 1<span class="code-tag">&lt;/button&gt;&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li&gt;&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"tab"</span><span class="code-tag">&gt;</span>Tab 2<span class="code-tag">&lt;/button&gt;&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li&gt;&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"tab"</span><span class="code-tag">&gt;</span>Tab 3<span class="code-tag">&lt;/button&gt;&lt;/li&gt;</span>
+  <span class="code-tag">&lt;/ul&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"tab-content"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"tab-panel active"</span><span class="code-tag">&gt;</span>Content 1<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"tab-panel"</span><span class="code-tag">&gt;</span>Content 2<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Utilities -->
+    <section id="utilities" class="demo-section">
+      <h2 class="demo-title">Utility Classes</h2>
+      <p class="demo-description">Helper classes for common styling needs.</p>
+      
+      <h3>Spacing</h3>
+      <div class="card">
+        <div class="p-3" style="background: var(--gray-100);">Padding 3</div>
+        <div class="m-3" style="background: var(--primary-light);">Margin 3</div>
+      </div>
+      
+      <h3>Text Alignment</h3>
+      <div class="text-left">Left aligned text</div>
+      <div class="text-center">Center aligned text</div>
+      <div class="text-right">Right aligned text</div>
+      
+      <h3>Colors</h3>
+      <div>
+        <span class="text-primary">Primary text</span> |
+        <span class="text-success">Success text</span> |
+        <span class="text-warning">Warning text</span> |
+        <span class="text-error">Error text</span> |
+        <span class="text-muted">Muted text</span>
+      </div>
+      
+      <h3>Display</h3>
+      <div class="d-flex align-items-center justify-content-between" style="background: var(--gray-100); padding: 1rem; border-radius: var(--border-radius-md);">
+        <div>Flex item 1</div>
+        <div>Flex item 2</div>
+        <div>Flex item 3</div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-comment">&lt;!-- Spacing --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"p-3 m-2"</span><span class="code-tag">&gt;</span>Padding and margin<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Text --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"text-center text-primary"</span><span class="code-tag">&gt;</span>Centered primary text<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Flexbox --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"d-flex justify-content-between align-items-center"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div&gt;</span>Item 1<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div&gt;</span>Item 2<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Tooltips -->
+    <section id="tooltips" class="demo-section">
+      <h2 class="demo-title">Tooltips</h2>
+      <p class="demo-description">Contextual popover information on hover or focus.</p>
+      
+      <div class="d-flex" style="gap: 2rem; justify-content: center; margin: 2rem 0;">
+        <div class="tooltip tooltip-top">
+          <button class="btn btn-primary">Hover me (Top)</button>
+          <span class="tooltip-text">This is a top tooltip</span>
+        </div>
+        <div class="tooltip tooltip-right">
+          <button class="btn btn-secondary">Hover me (Right)</button>
+          <span class="tooltip-text">This is a right tooltip</span>
+        </div>
+        <div class="tooltip tooltip-bottom">
+          <button class="btn btn-success">Hover me (Bottom)</button>
+          <span class="tooltip-text">This is a bottom tooltip</span>
+        </div>
+        <div class="tooltip tooltip-left">
+          <button class="btn btn-warning">Hover me (Left)</button>
+          <span class="tooltip-text">This is a left tooltip</span>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"tooltip tooltip-top"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Hover me<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"tooltip-text"</span><span class="code-tag">&gt;</span>Tooltip content<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Accordions -->
+    <section id="accordions" class="demo-section">
+      <h2 class="demo-title">Accordions</h2>
+      <p class="demo-description">Collapsible content sections for organizing information.</p>
+      
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">Section 1</button>
+          <div class="accordion-content">
+            <p>This is the content for section 1. It can contain any HTML content including text, images, and other components.</p>
+          </div>
+        </div>
+        <div class="accordion-item active">
+          <button class="accordion-header">Section 2 (Open)</button>
+          <div class="accordion-content">
+            <p>This section is open by default. Accordions are great for FAQ sections, documentation, and organizing large amounts of content.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Section 3</button>
+          <div class="accordion-content">
+            <p>Each section can be toggled independently. Perfect for creating interactive content areas.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"accordion"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"accordion-item"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"accordion-header"</span><span class="code-tag">&gt;</span>Section Title<span class="code-tag">&lt;/button&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"accordion-content"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;p&gt;</span>Content goes here<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Breadcrumbs -->
+    <section id="breadcrumbs" class="demo-section">
+      <h2 class="demo-title">Breadcrumbs</h2>
+      <p class="demo-description">Navigation breadcrumbs to show the current page location.</p>
+      
+      <nav class="breadcrumb">
+        <div class="breadcrumb-item">
+          <a href="#">Home</a>
+        </div>
+        <div class="breadcrumb-item">
+          <a href="#">Products</a>
+        </div>
+        <div class="breadcrumb-item">
+          <a href="#">Category</a>
+        </div>
+        <div class="breadcrumb-item active">Current Page</div>
+      </nav>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;nav</span> <span class="code-attr">class</span>=<span class="code-string">"breadcrumb"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"breadcrumb-item"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"breadcrumb-item active"</span><span class="code-tag">&gt;</span>Current Page<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/nav&gt;</span>
+      </div>
+    </section>
+
+    <!-- Pagination -->
+    <section id="pagination" class="demo-section">
+      <h2 class="demo-title">Pagination</h2>
+      <p class="demo-description">Navigate through multiple pages of content.</p>
+      
+      <nav class="pagination">
+        <a href="#" class="page-link disabled">Previous</a>
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <a href="#" class="page-link">4</a>
+        <a href="#" class="page-link">5</a>
+        <a href="#" class="page-link">Next</a>
+      </nav>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;nav</span> <span class="code-attr">class</span>=<span class="code-string">"pagination"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"page-link disabled"</span><span class="code-tag">&gt;</span>Previous<span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"page-link active"</span><span class="code-tag">&gt;</span>1<span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"page-link"</span><span class="code-tag">&gt;</span>2<span class="code-tag">&lt;/a&gt;</span>
+  <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"page-link"</span><span class="code-tag">&gt;</span>Next<span class="code-tag">&lt;/a&gt;</span>
+<span class="code-tag">&lt;/nav&gt;</span>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="demo-section">
+      <h2 class="demo-title">Timeline</h2>
+      <p class="demo-description">Display chronological information in a vertical timeline.</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">January 2024</div>
+            <div class="timeline-title">Project Started</div>
+            <p>Development of the new component library began with initial planning and research.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">March 2024</div>
+            <div class="timeline-title">First Release</div>
+            <p>Beta version launched with core components and basic functionality.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">June 2024</div>
+            <div class="timeline-title">Major Update</div>
+            <p>Added advanced components, improved accessibility, and enhanced documentation.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-item"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-marker"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-content"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-date"</span><span class="code-tag">&gt;</span>Date<span class="code-tag">&lt;/div&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-title"</span><span class="code-tag">&gt;</span>Title<span class="code-tag">&lt;/div&gt;</span>
+      <span class="code-tag">&lt;p&gt;</span>Content<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Steppers -->
+    <section id="steppers" class="demo-section">
+      <h2 class="demo-title">Steppers</h2>
+      <p class="demo-description">Guide users through multi-step processes.</p>
+      
+      <div class="stepper">
+        <div class="step completed">
+          <div class="step-number">1</div>
+          <div class="step-label">Account</div>
+        </div>
+        <div class="step completed">
+          <div class="step-number">2</div>
+          <div class="step-label">Profile</div>
+        </div>
+        <div class="step active">
+          <div class="step-number">3</div>
+          <div class="step-label">Preferences</div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-label">Complete</div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"stepper"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"step completed"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"step-number"</span><span class="code-tag">&gt;</span>1<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"step-label"</span><span class="code-tag">&gt;</span>Step 1<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"step active"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"step-number"</span><span class="code-tag">&gt;</span>2<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"step-label"</span><span class="code-tag">&gt;</span>Step 2<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- File Upload -->
+    <section id="file-upload" class="demo-section">
+      <h2 class="demo-title">File Upload</h2>
+      <p class="demo-description">Drag and drop file upload component.</p>
+      
+      <div class="file-upload">
+        <div class="file-upload-icon">📁</div>
+        <div class="file-upload-text">Drag & drop files here</div>
+        <div class="file-upload-hint">or click to select files</div>
+        <input type="file" multiple>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"file-upload"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"file-upload-icon"</span><span class="code-tag">&gt;</span>📁<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"file-upload-text"</span><span class="code-tag">&gt;</span>Drag &amp; drop files here<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"file-upload-hint"</span><span class="code-tag">&gt;</span>or click to select files<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"file"</span> <span class="code-attr">multiple</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Rating -->
+    <section id="rating" class="demo-section">
+      <h2 class="demo-title">Rating</h2>
+      <p class="demo-description">Star rating component for user feedback.</p>
+      
+      <div class="rating">
+        <span class="rating-star filled">★</span>
+        <span class="rating-star filled">★</span>
+        <span class="rating-star filled">★</span>
+        <span class="rating-star filled">★</span>
+        <span class="rating-star">★</span>
+        <span style="margin-left: 0.5rem;">4.0 out of 5</span>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"rating"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"rating-star filled"</span><span class="code-tag">&gt;</span>★<span class="code-tag">&lt;/span&gt;</span>
+  <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"rating-star filled"</span><span class="code-tag">&gt;</span>★<span class="code-tag">&lt;/span&gt;</span>
+  <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"rating-star"</span><span class="code-tag">&gt;</span>★<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Toggle Switch -->
+    <section id="toggle" class="demo-section">
+      <h2 class="demo-title">Toggle Switch</h2>
+      <p class="demo-description">Toggle switch for boolean settings.</p>
+      
+      <div class="d-flex align-items-center" style="gap: 1rem;">
+        <label class="toggle">
+          <input type="checkbox">
+          <span class="toggle-slider"></span>
+        </label>
+        <span>Enable notifications</span>
+      </div>
+      
+      <div style="margin-top: 1rem;">
+        <label class="toggle">
+          <input type="checkbox" checked>
+          <span class="toggle-slider"></span>
+        </label>
+        <span style="margin-left: 1rem;">Dark mode (On)</span>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;label</span> <span class="code-attr">class</span>=<span class="code-string">"toggle"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-string">"checkbox"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"toggle-slider"</span><span class="code-tag">&gt;&lt;/span&gt;</span>
+<span class="code-tag">&lt;/label&gt;</span>
+      </div>
+    </section>
+
+    <!-- Chips -->
+    <section id="chips" class="demo-section">
+      <h2 class="demo-title">Chips</h2>
+      <p class="demo-description">Compact elements that represent inputs, attributes, or actions.</p>
+      
+      <div style="margin-bottom: 1rem;">
+        <span class="chip">Default chip</span>
+        <span class="chip chip-primary">Primary chip <button class="chip-close">×</button></span>
+        <span class="chip chip-success">Success chip <button class="chip-close">×</button></span>
+        <span class="chip chip-warning">Warning chip <button class="chip-close">×</button></span>
+        <span class="chip chip-error">Error chip <button class="chip-close">×</button></span>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"chip chip-primary"</span><span class="code-tag">&gt;</span>
+  Primary chip 
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"chip-close"</span><span class="code-tag">&gt;</span>×<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/span&gt;</span>
+      </div>
+    </section>
+
+    <!-- Skeleton Loader -->
+    <section id="skeleton" class="demo-section">
+      <h2 class="demo-title">Skeleton Loader</h2>
+      <p class="demo-description">Loading placeholders for content that hasn't loaded yet.</p>
+      
+      <div class="card">
+        <div class="d-flex align-items-center" style="gap: 1rem; margin-bottom: 1rem;">
+          <div class="skeleton skeleton-avatar"></div>
+          <div style="flex: 1;">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-text"></div>
+          </div>
+        </div>
+        <div class="skeleton skeleton-image"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text" style="width: 60%;"></div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"skeleton skeleton-text"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"skeleton skeleton-title"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"skeleton skeleton-avatar"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"skeleton skeleton-image"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section id="pricing" class="demo-section">
+      <h2 class="demo-title">Pricing Cards</h2>
+      <p class="demo-description">Pricing table components for subscription plans.</p>
+      
+      <div class="demo-grid demo-grid-3">
+        <div class="pricing-card">
+          <div class="pricing-title">Basic</div>
+          <div class="pricing-price">$9<span class="pricing-period">/month</span></div>
+          <ul class="pricing-features">
+            <li>5 Projects</li>
+            <li>10GB Storage</li>
+            <li>Email Support</li>
+          </ul>
+          <button class="btn btn-outline btn-primary">Choose Plan</button>
+        </div>
+        
+        <div class="pricing-card featured">
+          <div class="pricing-title">Pro</div>
+          <div class="pricing-price">$29<span class="pricing-period">/month</span></div>
+          <ul class="pricing-features">
+            <li>Unlimited Projects</li>
+            <li>100GB Storage</li>
+            <li>Priority Support</li>
+            <li>Advanced Features</li>
+          </ul>
+          <button class="btn btn-primary">Choose Plan</button>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-title">Enterprise</div>
+          <div class="pricing-price">$99<span class="pricing-period">/month</span></div>
+          <ul class="pricing-features">
+            <li>Unlimited Everything</li>
+            <li>1TB Storage</li>
+            <li>24/7 Support</li>
+            <li>Custom Integration</li>
+          </ul>
+          <button class="btn btn-outline btn-primary">Contact Sales</button>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"pricing-card featured"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"pricing-title"</span><span class="code-tag">&gt;</span>Pro<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"pricing-price"</span><span class="code-tag">&gt;</span>$29<span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"pricing-period"</span><span class="code-tag">&gt;</span>/month<span class="code-tag">&lt;/span&gt;&lt;/div&gt;</span>
+  <span class="code-tag">&lt;ul</span> <span class="code-attr">class</span>=<span class="code-string">"pricing-features"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Feature 1<span class="code-tag">&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Feature 2<span class="code-tag">&lt;/li&gt;</span>
+  <span class="code-tag">&lt;/ul&gt;</span>
+  <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Choose Plan<span class="code-tag">&lt;/button&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Progress Bars -->
+    <section id="progress" class="demo-section">
+      <h2 class="demo-title">Progress Bars</h2>
+      <p class="demo-description">Visual indicators for completion status and loading progress.</p>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Basic Progress Bar</h4>
+        <div class="progress">
+          <div class="progress-bar" style="width: 60%;">60%</div>
+        </div>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Different Sizes</h4>
+        <div class="progress progress-sm" style="margin-bottom: 1rem;">
+          <div class="progress-bar progress-bar-success" style="width: 40%;"></div>
+        </div>
+        <div class="progress" style="margin-bottom: 1rem;">
+          <div class="progress-bar progress-bar-warning" style="width: 70%;">70%</div>
+        </div>
+        <div class="progress progress-lg">
+          <div class="progress-bar progress-bar-error" style="width: 30%;">30%</div>
+        </div>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Animated Striped Progress</h4>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-info" style="width: 75%;">Loading...</div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"progress"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"progress-bar"</span> <span class="code-attr">style</span>=<span class="code-string">"width: 60%;"</span><span class="code-tag">&gt;</span>60%<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Animated Striped --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"progress-bar progress-bar-striped progress-bar-animated"</span><span class="code-tag">&gt;</span>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section id="badges" class="demo-section">
+      <h2 class="demo-title">Badges</h2>
+      <p class="demo-description">Small count and labeling components.</p>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Color Variants</h4>
+        <span class="badge">Default</span>
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-secondary">Secondary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-error">Error</span>
+        <span class="badge badge-info">Info</span>
+        <span class="badge badge-light">Light</span>
+        <span class="badge badge-dark">Dark</span>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Outline Badges</h4>
+        <span class="badge badge-outline badge-primary">Primary</span>
+        <span class="badge badge-outline badge-success">Success</span>
+        <span class="badge badge-outline badge-warning">Warning</span>
+        <span class="badge badge-outline badge-error">Error</span>
+        <span class="badge badge-outline badge-info">Info</span>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Pill Badges</h4>
+        <span class="badge badge-pill badge-primary">99+</span>
+        <span class="badge badge-pill badge-success">New</span>
+        <span class="badge badge-pill badge-warning">Hot</span>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Different Sizes</h4>
+        <span class="badge badge-sm badge-primary">Small</span>
+        <span class="badge badge-primary">Default</span>
+        <span class="badge badge-lg badge-primary">Large</span>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>With Buttons</h4>
+        <button class="btn btn-primary">Messages <span class="badge badge-light">4</span></button>
+        <button class="btn btn-secondary">Notifications <span class="badge badge-error">12</span></button>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"badge badge-primary"</span><span class="code-tag">&gt;</span>Primary<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"badge badge-pill badge-success"</span><span class="code-tag">&gt;</span>Pill Badge<span class="code-tag">&lt;/span&gt;</span>
+<span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"badge badge-outline badge-warning"</span><span class="code-tag">&gt;</span>Outline<span class="code-tag">&lt;/span&gt;</span>
+      </div>
+    </section>
+
+    <!-- Loading States -->
+    <section id="loading" class="demo-section">
+      <h2 class="demo-title">Loading States</h2>
+      <p class="demo-description">Loading indicators and states for better user experience.</p>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Loading Buttons</h4>
+        <button class="btn btn-primary loading">Loading Button</button>
+        <button class="btn btn-success loading-dots">Loading with Dots</button>
+        <button class="btn btn-warning" disabled>Disabled State</button>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Spinners</h4>
+        <div class="d-flex align-items-center" style="gap: 2rem;">
+          <div class="spinner spinner-sm"></div>
+          <div class="spinner"></div>
+          <div class="spinner spinner-lg"></div>
+        </div>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Colored Spinners</h4>
+        <div class="d-flex align-items-center" style="gap: 1rem;">
+          <div class="spinner spinner-primary"></div>
+          <div class="spinner spinner-success"></div>
+          <div class="spinner spinner-warning"></div>
+          <div class="spinner spinner-error"></div>
+          <div class="spinner spinner-info"></div>
+        </div>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Pulse Loading</h4>
+        <div class="card pulse" style="max-width: 300px;">
+          <h5>Loading Content...</h5>
+          <p>This card has a pulse animation while loading.</p>
+        </div>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h4>Loading Text Examples</h4>
+        <div class="d-flex align-items-center" style="gap: 1rem;">
+          <span class="spinner spinner-sm"></span>
+          <span>Loading...</span>
+        </div>
+        <div class="d-flex align-items-center" style="gap: 1rem; margin-top: 1rem;">
+          <span class="spinner spinner-sm spinner-success"></span>
+          <span>Saving changes...</span>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-comment">&lt;!-- Loading Button --&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary loading"</span><span class="code-tag">&gt;</span>Loading<span class="code-tag">&lt;/button&gt;</span>
+
+<span class="code-comment">&lt;!-- Spinner --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"spinner"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"spinner spinner-lg spinner-primary"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Pulse Animation --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"pulse"</span><span class="code-tag">&gt;</span>Loading content...<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Data Tables -->
+    <section id="data-table" class="demo-section">
+      <h2 class="demo-title">Data Tables</h2>
+      <p class="demo-description">Professional data tables with sorting, hover effects, and status indicators.</p>
+      
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Role</th>
+            <th>Last Login</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Doe</td>
+            <td>john@example.com</td>
+            <td><span class="status-badge status-active">Active</span></td>
+            <td>Admin</td>
+            <td>2 hours ago</td>
+          </tr>
+          <tr>
+            <td>Jane Smith</td>
+            <td>jane@example.com</td>
+            <td><span class="status-badge status-pending">Pending</span></td>
+            <td>User</td>
+            <td>1 day ago</td>
+          </tr>
+          <tr>
+            <td>Bob Wilson</td>
+            <td>bob@example.com</td>
+            <td><span class="status-badge status-inactive">Inactive</span></td>
+            <td>Moderator</td>
+            <td>1 week ago</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;table</span> <span class="code-attr">class</span>=<span class="code-string">"data-table"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;thead&gt;</span>
+    <span class="code-tag">&lt;tr&gt;</span>
+      <span class="code-tag">&lt;th&gt;</span>Name<span class="code-tag">&lt;/th&gt;</span>
+      <span class="code-tag">&lt;th&gt;</span>Status<span class="code-tag">&lt;/th&gt;</span>
+    <span class="code-tag">&lt;/tr&gt;</span>
+  <span class="code-tag">&lt;/thead&gt;</span>
+  <span class="code-tag">&lt;tbody&gt;</span>
+    <span class="code-tag">&lt;tr&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>John Doe<span class="code-tag">&lt;/td&gt;</span>
+      <span class="code-tag">&lt;td&gt;</span>
+        <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"status-badge status-active"</span><span class="code-tag">&gt;</span>Active<span class="code-tag">&lt;/span&gt;</span>
+      <span class="code-tag">&lt;/td&gt;</span>
+    <span class="code-tag">&lt;/tr&gt;</span>
+  <span class="code-tag">&lt;/tbody&gt;</span>
+<span class="code-tag">&lt;/table&gt;</span>
+      </div>
+    </section>
+
+    <!-- Feature Cards -->
+    <section id="feature-cards" class="demo-section">
+      <h2 class="demo-title">Feature Cards</h2>
+      <p class="demo-description">Stunning feature cards with icons, hover animations, and gradient effects.</p>
+      
+      <div class="demo-grid demo-grid-3">
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <div class="feature-title">Fast Performance</div>
+          <div class="feature-description">Lightning-fast loading times and optimized performance for the best user experience.</div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-title">Secure & Safe</div>
+          <div class="feature-description">Bank-level security with end-to-end encryption to protect your data and privacy.</div>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">Mobile First</div>
+          <div class="feature-description">Responsive design that works perfectly on all devices, from mobile to desktop.</div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"feature-card"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"feature-icon"</span><span class="code-tag">&gt;</span>🚀<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"feature-title"</span><span class="code-tag">&gt;</span>Feature Title<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"feature-description"</span><span class="code-tag">&gt;</span>Description text<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="demo-section">
+      <h2 class="demo-title">Testimonials</h2>
+      <p class="demo-description">Beautiful testimonial cards with customer feedback and author information.</p>
+      
+      <div class="demo-grid demo-grid-2">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            This product has completely transformed how we work. The interface is intuitive and the features are exactly what we needed.
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Author" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h5>Michael Chen</h5>
+              <p>CEO, TechStart Inc.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            Outstanding service and support! The team went above and beyond to help us implement this solution successfully.
+          </div>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612c131?w=150&h=150&fit=crop&crop=face" alt="Author" class="testimonial-avatar">
+            <div class="testimonial-info">
+              <h5>Sarah Johnson</h5>
+              <p>Product Manager, InnovateCorp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"testimonial-card"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"testimonial-content"</span><span class="code-tag">&gt;</span>
+    Testimonial text goes here...
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"testimonial-author"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"avatar.jpg"</span> <span class="code-attr">class</span>=<span class="code-string">"testimonial-avatar"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"testimonial-info"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;h5&gt;</span>Author Name<span class="code-tag">&lt;/h5&gt;</span>
+      <span class="code-tag">&lt;p&gt;</span>Position, Company<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section id="image-gallery" class="demo-section">
+      <h2 class="demo-title">Image Gallery</h2>
+      <p class="demo-description">Responsive image gallery with hover effects and overlay animations.</p>
+      
+      <div class="image-gallery">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=400&fit=crop" alt="Gallery Image" class="gallery-image">
+          <div class="gallery-overlay">
+            <span>View Image</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1486312338219-ce68e2c6b696?w=400&h=400&fit=crop" alt="Gallery Image" class="gallery-image">
+          <div class="gallery-overlay">
+            <span>View Image</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop" alt="Gallery Image" class="gallery-image">
+          <div class="gallery-overlay">
+            <span>View Image</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1518976024611-28bf4b48222e?w=400&h=400&fit=crop" alt="Gallery Image" class="gallery-image">
+          <div class="gallery-overlay">
+            <span>View Image</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"image-gallery"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"gallery-item"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"image.jpg"</span> <span class="code-attr">class</span>=<span class="code-string">"gallery-image"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"gallery-overlay"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;span&gt;</span>View Image<span class="code-tag">&lt;/span&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Stats Cards -->
+    <section id="stats-cards" class="demo-section">
+      <h2 class="demo-title">Stats Cards</h2>
+      <p class="demo-description">Eye-catching statistics cards with trends and gradient effects.</p>
+      
+      <div class="demo-grid demo-grid-4">
+        <div class="stats-card">
+          <div class="stats-number">12,345</div>
+          <div class="stats-label">Total Users</div>
+          <div class="stats-trend trend-up">
+            <span>↗</span>
+            <span>+12.5%</span>
+          </div>
+        </div>
+        
+        <div class="stats-card">
+          <div class="stats-number">₹89,000</div>
+          <div class="stats-label">Revenue</div>
+          <div class="stats-trend trend-up">
+            <span>↗</span>
+            <span>+8.2%</span>
+          </div>
+        </div>
+        
+        <div class="stats-card">
+          <div class="stats-number">234</div>
+          <div class="stats-label">Orders</div>
+          <div class="stats-trend trend-down">
+            <span>↘</span>
+            <span>-3.1%</span>
+          </div>
+        </div>
+        
+        <div class="stats-card">
+          <div class="stats-number">98.5%</div>
+          <div class="stats-label">Uptime</div>
+          <div class="stats-trend trend-up">
+            <span>↗</span>
+            <span>+0.3%</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"stats-card"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"stats-number"</span><span class="code-tag">&gt;</span>12,345<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"stats-label"</span><span class="code-tag">&gt;</span>Total Users<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"stats-trend trend-up"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;span&gt;</span>↗<span class="code-tag">&lt;/span&gt;</span>
+    <span class="code-tag">&lt;span&gt;</span>+12.5%<span class="code-tag">&lt;/span&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section id="comparison" class="demo-section">
+      <h2 class="demo-title">Comparison Table</h2>
+      <p class="demo-description">Feature comparison table with highlighted recommended plans.</p>
+      
+      <div class="comparison-table">
+        <div class="comparison-column">
+          <div class="comparison-header">
+            <div class="comparison-title">Basic</div>
+            <div class="comparison-price">Free</div>
+            <div class="comparison-period">Forever</div>
+          </div>
+          <div class="comparison-features">
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>5 Projects</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>1GB Storage</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-cross">✗</span>
+              <span>Priority Support</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-cross">✗</span>
+              <span>Advanced Analytics</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="comparison-column featured">
+          <div class="comparison-header">
+            <div class="comparison-title">Pro</div>
+            <div class="comparison-price">₹999</div>
+            <div class="comparison-period">per month</div>
+          </div>
+          <div class="comparison-features">
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>Unlimited Projects</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>100GB Storage</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>Priority Support</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>Advanced Analytics</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="comparison-column">
+          <div class="comparison-header">
+            <div class="comparison-title">Enterprise</div>
+            <div class="comparison-price">₹2999</div>
+            <div class="comparison-period">per month</div>
+          </div>
+          <div class="comparison-features">
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>Everything in Pro</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>1TB Storage</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>24/7 Support</span>
+            </div>
+            <div class="comparison-feature">
+              <span class="feature-check">✓</span>
+              <span>Custom Integration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"comparison-table"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"comparison-column featured"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"comparison-header"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"comparison-title"</span><span class="code-tag">&gt;</span>Pro<span class="code-tag">&lt;/div&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"comparison-price"</span><span class="code-tag">&gt;</span>₹999<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"comparison-features"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"comparison-feature"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"feature-check"</span><span class="code-tag">&gt;</span>✓<span class="code-tag">&lt;/span&gt;</span>
+        <span class="code-tag">&lt;span&gt;</span>Feature name<span class="code-tag">&lt;/span&gt;</span>
+      <span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Calendar -->
+    <section id="calendar" class="demo-section">
+      <h2 class="demo-title">Calendar</h2>
+      <p class="demo-description">Interactive calendar component for date selection and scheduling.</p>
+      
+      <div style="display: flex; justify-content: center;">
+        <div class="calendar">
+          <div class="calendar-header">
+            <button class="calendar-nav">‹</button>
+            <div class="calendar-title">December 2024</div>
+            <button class="calendar-nav">›</button>
+          </div>
+          <div class="calendar-grid">
+            <div class="calendar-day-header">Sun</div>
+            <div class="calendar-day-header">Mon</div>
+            <div class="calendar-day-header">Tue</div>
+            <div class="calendar-day-header">Wed</div>
+            <div class="calendar-day-header">Thu</div>
+            <div class="calendar-day-header">Fri</div>
+            <div class="calendar-day-header">Sat</div>
+            <div class="calendar-day other-month">29</div>
+            <div class="calendar-day other-month">30</div>
+            <div class="calendar-day">1</div>
+            <div class="calendar-day">2</div>
+            <div class="calendar-day">3</div>
+            <div class="calendar-day">4</div>
+            <div class="calendar-day">5</div>
+            <div class="calendar-day">6</div>
+            <div class="calendar-day">7</div>
+            <div class="calendar-day">8</div>
+            <div class="calendar-day">9</div>
+            <div class="calendar-day">10</div>
+            <div class="calendar-day">11</div>
+            <div class="calendar-day">12</div>
+            <div class="calendar-day">13</div>
+            <div class="calendar-day">14</div>
+            <div class="calendar-day today">15</div>
+            <div class="calendar-day">16</div>
+            <div class="calendar-day">17</div>
+            <div class="calendar-day">18</div>
+            <div class="calendar-day">19</div>
+            <div class="calendar-day selected">20</div>
+            <div class="calendar-day">21</div>
+            <div class="calendar-day">22</div>
+            <div class="calendar-day">23</div>
+            <div class="calendar-day">24</div>
+            <div class="calendar-day">25</div>
+            <div class="calendar-day">26</div>
+            <div class="calendar-day">27</div>
+            <div class="calendar-day">28</div>
+            <div class="calendar-day">29</div>
+            <div class="calendar-day">30</div>
+            <div class="calendar-day">31</div>
+            <div class="calendar-day other-month">1</div>
+            <div class="calendar-day other-month">2</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"calendar"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"calendar-header"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"calendar-nav"</span><span class="code-tag">&gt;</span>‹<span class="code-tag">&lt;/button&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"calendar-title"</span><span class="code-tag">&gt;</span>December 2024<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"calendar-nav"</span><span class="code-tag">&gt;</span>›<span class="code-tag">&lt;/button&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"calendar-grid"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"calendar-day today"</span><span class="code-tag">&gt;</span>15<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"calendar-day selected"</span><span class="code-tag">&gt;</span>20<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Enhanced Timeline -->
+    <section id="timeline-enhanced" class="demo-section">
+      <h2 class="demo-title">Enhanced Timeline</h2>
+      <p class="demo-description">Advanced timeline with gradient connectors and enhanced visual design.</p>
+      
+      <div class="timeline-enhanced">
+        <div class="timeline-item-enhanced">
+          <div class="timeline-marker-enhanced"></div>
+          <div class="timeline-content-enhanced">
+            <div class="timeline-date-enhanced">January 15, 2024</div>
+            <div class="timeline-title-enhanced">Project Kickoff</div>
+            <p>Initial planning and team formation. Defined project scope, timeline, and deliverables for the upcoming development cycle.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item-enhanced">
+          <div class="timeline-marker-enhanced"></div>
+          <div class="timeline-content-enhanced">
+            <div class="timeline-date-enhanced">February 28, 2024</div>
+            <div class="timeline-title-enhanced">Design Phase Complete</div>
+            <p>Completed UI/UX designs, user journey mapping, and created interactive prototypes for stakeholder review and approval.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item-enhanced">
+          <div class="timeline-marker-enhanced"></div>
+          <div class="timeline-content-enhanced">
+            <div class="timeline-date-enhanced">April 10, 2024</div>
+            <div class="timeline-title-enhanced">Beta Launch</div>
+            <p>Successfully launched beta version to limited user group. Collected feedback and identified areas for improvement.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-enhanced"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-item-enhanced"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-marker-enhanced"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-content-enhanced"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-date-enhanced"</span><span class="code-tag">&gt;</span>Date<span class="code-tag">&lt;/div&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"timeline-title-enhanced"</span><span class="code-tag">&gt;</span>Title<span class="code-tag">&lt;/div&gt;</span>
+      <span class="code-tag">&lt;p&gt;</span>Content<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Dashboard Widgets -->
+    <section id="dashboard" class="demo-section">
+      <h2 class="demo-title">Dashboard Widgets</h2>
+      <p class="demo-description">Professional dashboard widgets for data visualization and metrics.</p>
+      
+      <div class="demo-grid demo-grid-2">
+        <div class="widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Performance Metrics</h3>
+          </div>
+          <div class="widget-body">
+            <div class="widget-metric">
+              <span class="metric-label">Page Views</span>
+              <span class="metric-value">127,543</span>
+            </div>
+            <div class="widget-metric">
+              <span class="metric-label">Unique Visitors</span>
+              <span class="metric-value">45,892</span>
+            </div>
+            <div class="widget-metric">
+              <span class="metric-label">Bounce Rate</span>
+              <span class="metric-value">23.4%</span>
+            </div>
+            <div class="widget-metric">
+              <span class="metric-label">Avg. Session</span>
+              <span class="metric-value">3:42</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Sales Overview</h3>
+          </div>
+          <div class="widget-body">
+            <div class="widget-metric">
+              <span class="metric-label">Total Sales</span>
+              <span class="metric-value">₹8,45,230</span>
+            </div>
+            <div class="widget-metric">
+              <span class="metric-label">Orders</span>
+              <span class="metric-value">1,245</span>
+            </div>
+            <div class="widget-metric">
+              <span class="metric-label">Conversion Rate</span>
+              <span class="metric-value">4.2%</span>
+            </div>
+            <div class="widget-metric">
+              <span class="metric-label">Avg. Order Value</span>
+              <span class="metric-value">₹679</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"widget"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"widget-header"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;h3</span> <span class="code-attr">class</span>=<span class="code-string">"widget-title"</span><span class="code-tag">&gt;</span>Widget Title<span class="code-tag">&lt;/h3&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"widget-body"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"widget-metric"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"metric-label"</span><span class="code-tag">&gt;</span>Label<span class="code-tag">&lt;/span&gt;</span>
+      <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-string">"metric-value"</span><span class="code-tag">&gt;</span>Value<span class="code-tag">&lt;/span&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Card Overlays -->
+    <section id="card-overlays" class="demo-section">
+      <h2 class="demo-title">Card Overlays</h2>
+      <p class="demo-description">Advanced cards with image overlays and hover animations.</p>
+      
+      <div class="demo-grid demo-grid-3">
+        <div class="card-overlay">
+          <div class="card-image-container">
+            <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400&h=200&fit=crop" alt="Card Image" class="card-image">
+            <div class="card-image-overlay">
+              <div class="overlay-content">
+                <div class="overlay-title">Stunning Design</div>
+                <div class="overlay-text">Beautiful layouts that captivate</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5>Modern Architecture</h5>
+            <p>Discover innovative building designs that push the boundaries of contemporary architecture.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        
+        <div class="card-overlay">
+          <div class="card-image-container">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68e2c6b696?w=400&h=200&fit=crop" alt="Card Image" class="card-image">
+            <div class="card-image-overlay">
+              <div class="overlay-content">
+                <div class="overlay-title">Technology</div>
+                <div class="overlay-text">Cutting-edge innovations</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5>Future Tech</h5>
+            <p>Explore the latest technological advances that are shaping our digital future.</p>
+            <a href="#" class="btn btn-outline btn-primary">Explore</a>
+          </div>
+        </div>
+        
+        <div class="card-overlay">
+          <div class="card-image-container">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=200&fit=crop" alt="Card Image" class="card-image">
+            <div class="card-image-overlay">
+              <div class="overlay-content">
+                <div class="overlay-title">Innovation</div>
+                <div class="overlay-text">Creative solutions for tomorrow</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5>Creative Solutions</h5>
+            <p>Innovative approaches to solving complex problems in the modern world.</p>
+            <a href="#" class="btn btn-success">Get Started</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-overlay"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-image-container"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"image.jpg"</span> <span class="code-attr">class</span>=<span class="code-string">"card-image"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-image-overlay"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"overlay-content"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"overlay-title"</span><span class="code-tag">&gt;</span>Title<span class="code-tag">&lt;/div&gt;</span>
+      <span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"card-body"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;h5&gt;</span>Card Title<span class="code-tag">&lt;/h5&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Card content<span class="code-tag">&lt;/p&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Hero Sections -->
+    <section id="hero-sections" class="demo-section">
+      <h2 class="demo-title">Hero Sections</h2>
+      <p class="demo-description">Stunning hero sections with various layouts and styles for landing pages.</p>
+      
+      <h4>Default Hero with Gradient</h4>
+      <div class="hero" style="margin-bottom: 2rem;">
+        <div class="hero-content">
+          <h1 class="hero-title">Build Amazing Products</h1>
+          <p class="hero-subtitle">Create stunning web applications with our comprehensive component library</p>
+          <div class="hero-actions">
+            <button class="btn btn-lg" style="background: white; color: var(--primary-color);">Get Started</button>
+            <button class="btn btn-lg btn-outline" style="border-color: white; color: white;">Learn More</button>
+          </div>
+        </div>
+      </div>
+      
+      <h4>Minimal Hero</h4>
+      <div class="hero-minimal" style="margin-bottom: 2rem;">
+        <div class="hero-content">
+          <h1 class="hero-title">Simple & Clean</h1>
+          <p class="hero-subtitle">Minimalist design for elegant presentations</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg">Start Now</button>
+          </div>
+        </div>
+      </div>
+      
+      <h4>Split Hero Layout</h4>
+      <div class="hero-split" style="margin-bottom: 2rem; border: 1px solid var(--gray-200);">
+        <div class="hero-split-content">
+          <h1 class="hero-title">Split Layout Design</h1>
+          <p class="hero-subtitle">Perfect for showcasing features alongside visuals</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary">Explore Features</button>
+            <button class="btn btn-outline btn-secondary">Watch Demo</button>
+          </div>
+        </div>
+        <div class="hero-split-image" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop');"></div>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"hero"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"hero-content"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;h1</span> <span class="code-attr">class</span>=<span class="code-string">"hero-title"</span><span class="code-tag">&gt;</span>Your Title<span class="code-tag">&lt;/h1&gt;</span>
+    <span class="code-tag">&lt;p</span> <span class="code-attr">class</span>=<span class="code-string">"hero-subtitle"</span><span class="code-tag">&gt;</span>Your subtitle<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"hero-actions"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary btn-lg"</span><span class="code-tag">&gt;</span>Get Started<span class="code-tag">&lt;/button&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">&lt;!-- Split Hero --&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"hero-split"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"hero-split-content"</span><span class="code-tag">&gt;</span>Content<span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"hero-split-image"</span><span class="code-tag">&gt;&lt;/div&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+      </div>
+    </section>
+
+    <!-- Headers -->
+    <section id="headers" class="demo-section">
+      <h2 class="demo-title">Headers</h2>
+      <p class="demo-description">Professional navigation headers with various styles and layouts.</p>
+      
+      <h4>Default Header</h4>
+      <div style="border: 1px solid var(--gray-200); margin-bottom: 2rem;">
+        <header class="header" style="position: relative;">
+          <div class="header-container">
+            <a href="#" class="header-brand">
+              <div style="width: 2rem; height: 2rem; background: var(--primary-color); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">D</div>
+              DevUI
+            </a>
+            <nav class="header-nav">
+              <a href="#" class="active">Home</a>
+              <a href="#">Products</a>
+              <a href="#">Services</a>
+              <a href="#">About</a>
+              <a href="#">Contact</a>
+            </nav>
+            <div class="header-actions">
+              <button class="btn btn-outline btn-primary">Login</button>
+              <button class="btn btn-primary">Sign Up</button>
+            </div>
+          </div>
+        </header>
+      </div>
+      
+      <h4>Dark Header</h4>
+      <div style="border: 1px solid var(--gray-300); margin-bottom: 2rem;">
+        <header class="header header-dark" style="position: relative;">
+          <div class="header-container">
+            <a href="#" class="header-brand">
+              <div style="width: 2rem; height: 2rem; background: var(--primary-color); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">D</div>
+              DevUI
+            </a>
+            <nav class="header-nav">
+              <a href="#" class="active">Dashboard</a>
+              <a href="#">Analytics</a>
+              <a href="#">Reports</a>
+              <a href="#">Settings</a>
+            </nav>
+            <div class="header-actions">
+              <button class="btn btn-outline" style="border-color: white; color: white;">Profile</button>
+            </div>
+          </div>
+        </header>
+      </div>
+      
+      <h4>Centered Header</h4>
+      <div style="border: 1px solid var(--gray-200); margin-bottom: 2rem;">
+        <header class="header header-centered" style="position: relative;">
+          <div class="header-container">
+            <a href="#" class="header-brand">
+              <div style="width: 2rem; height: 2rem; background: var(--primary-color); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">D</div>
+              DevUI Library
+            </a>
+            <nav class="header-nav">
+              <a href="#" class="active">Home</a>
+              <a href="#">Gallery</a>
+              <a href="#">Blog</a>
+              <a href="#">Contact</a>
+            </nav>
+          </div>
+        </header>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;header</span> <span class="code-attr">class</span>=<span class="code-string">"header"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"header-container"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"header-brand"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-string">"logo.png"</span> <span class="code-attr">class</span>=<span class="code-string">"header-logo"</span><span class="code-tag">&gt;</span>
+      Brand Name
+    <span class="code-tag">&lt;/a&gt;</span>
+    <span class="code-tag">&lt;nav</span> <span class="code-attr">class</span>=<span class="code-string">"header-nav"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"active"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;</span>
+      <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;</span>
+    <span class="code-tag">&lt;/nav&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"header-actions"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span><span class="code-tag">&gt;</span>Sign Up<span class="code-tag">&lt;/button&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/header&gt;</span>
+
+<span class="code-comment">&lt;!-- Dark Header --&gt;</span>
+<span class="code-tag">&lt;header</span> <span class="code-attr">class</span>=<span class="code-string">"header header-dark"</span><span class="code-tag">&gt;</span>
+      </div>
+    </section>
+
+    <!-- Footers -->
+    <section id="footers" class="demo-section">
+      <h2 class="demo-title">Footers</h2>
+      <p class="demo-description">Comprehensive footer sections with links, social media, and newsletter signup.</p>
+      
+      <h4>Complete Footer</h4>
+      <div style="border: 1px solid var(--gray-300); margin-bottom: 2rem;">
+        <footer class="footer">
+          <div class="footer-container">
+            <div class="footer-newsletter">
+              <h3>Stay Updated</h3>
+              <p>Get the latest updates and news delivered to your inbox</p>
+              <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+              </div>
+            </div>
+            
+            <div class="footer-content">
+              <div class="footer-section">
+                <h4 class="footer-title">DevUI Library</h4>
+                <p class="footer-description">A comprehensive CSS component library for building modern web applications quickly and efficiently.</p>
+                <div class="footer-social">
+                  <a href="#">📘</a>
+                  <a href="#">🐦</a>
+                  <a href="#">📷</a>
+                  <a href="#">💼</a>
+                </div>
+              </div>
+              
+              <div class="footer-section">
+                <h4 class="footer-title">Products</h4>
+                <ul class="footer-links">
+                  <li><a href="#">Components</a></li>
+                  <li><a href="#">Templates</a></li>
+                  <li><a href="#">Icons</a></li>
+                  <li><a href="#">Themes</a></li>
+                </ul>
+              </div>
+              
+              <div class="footer-section">
+                <h4 class="footer-title">Resources</h4>
+                <ul class="footer-links">
+                  <li><a href="#">Documentation</a></li>
+                  <li><a href="#">Tutorials</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Support</a></li>
+                </ul>
+              </div>
+              
+              <div class="footer-section">
+                <h4 class="footer-title">Company</h4>
+                <ul class="footer-links">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Partners</a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="footer-bottom">
+              <div class="footer-copyright">
+                © 2024 DevUI Library. All rights reserved.
+              </div>
+              <ul class="footer-bottom-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookies</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+      
+      <h4>Light Footer</h4>
+      <div style="border: 1px solid var(--gray-300); margin-bottom: 2rem;">
+        <footer class="footer footer-light">
+          <div class="footer-container">
+            <div class="footer-content">
+              <div class="footer-section">
+                <h4 class="footer-title">DevUI</h4>
+                <p class="footer-description">Beautiful components for modern web applications.</p>
+              </div>
+              
+              <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="footer-bottom">
+              <div class="footer-copyright">© 2024 DevUI. Made with ❤️</div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      
+      <h4>Minimal Footer</h4>
+      <div style="border: 1px solid var(--gray-300); margin-bottom: 2rem;">
+        <footer class="footer-minimal">
+          <div class="footer-container">
+            <div class="footer-content">
+              <p>© 2024 DevUI Library. Built with passion for developers.</p>
+              <div class="footer-social">
+                <a href="#">GitHub</a>
+                <a href="#">Twitter</a>
+                <a href="#">Discord</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      
+      <div class="code-example">
+<span class="code-tag">&lt;footer</span> <span class="code-attr">class</span>=<span class="code-string">"footer"</span><span class="code-tag">&gt;</span>
+  <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"footer-container"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"footer-content"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"footer-section"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;h4</span> <span class="code-attr">class</span>=<span class="code-string">"footer-title"</span><span class="code-tag">&gt;</span>Company<span class="code-tag">&lt;/h4&gt;</span>
+        <span class="code-tag">&lt;ul</span> <span class="code-attr">class</span>=<span class="code-string">"footer-links"</span><span class="code-tag">&gt;</span>
+          <span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+          <span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span><span class="code-tag">&gt;</span>Contact<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="code-tag">&lt;/ul&gt;</span>
+      <span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"footer-bottom"</span><span class="code-tag">&gt;</span>
+      <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-string">"footer-copyright"</span><span class="code-tag">&gt;</span>© 2024 Company<span class="code-tag">&lt;/div&gt;</span>
+    <span class="code-tag">&lt;/div&gt;</span>
+  <span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;/footer&gt;</span>
+
+<span class="code-comment">&lt;!-- Light Footer --&gt;</span>
+<span class="code-tag">&lt;footer</span> <span class="code-attr">class</span>=<span class="code-string">"footer footer-light"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- Minimal Footer --&gt;</span>
+<span class="code-tag">&lt;footer</span> <span class="code-attr">class</span>=<span class="code-string">"footer-minimal"</span><span class="code-tag">&gt;</span>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem; text-align: center; padding: 2rem; background: var(--gray-900); color: var(--white); border-radius: var(--border-radius-lg);">
+      <h3>DevUI CSS Library</h3>
+      <p>Built with ❤️ by Anvith Shetty</p>
+      <div style="margin-top: 1rem;">
+        <a href="https://github.com/anvithshetty17/devui-css-library" class="btn btn-outline" style="border-color: white; color: white;">GitHub</a>
+        <a href="#" class="btn btn-outline" style="border-color: white; color: white; margin-left: 1rem;">Documentation</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Simple tab functionality for demo
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        this.classList.add('active');
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.sidebar-nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          // Update active link
+          document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

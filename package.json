@@ -1,0 +1,41 @@
+{
+  "name": "devui-css-library",
+  "version": "1.0.0",
+  "description": "A comprehensive, developer-friendly CSS component library for modern web applications",
+  "main": "devui-library.css",
+  "files": [
+    "devui-library.css",
+    "documentation.html",
+    "README.md"
+  ],
+  "keywords": [
+    "css",
+    "library",
+    "components",
+    "ui",
+    "framework",
+    "responsive",
+    "accessible",
+    "modern"
+  ],
+  "author": "Anvith Shetty <anvithshetty17@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anvithshetty17/devui-css-library.git"
+  },
+  "homepage": "https://anvithshetty17.github.io/devui-css-library",
+  "bugs": {
+    "url": "https://github.com/anvithshetty17/devui-css-library/issues"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "build": "echo 'No build step required - pure CSS library'",
+    "test": "echo 'No tests yet'",
+    "docs": "open documentation.html"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
