@@ -5,7 +5,7 @@
   "main": "devui-library.css",
   "files": [
     "devui-library.css",
-    "documentation.html",
+    "index.html",
     "README.md"
   ],
   "keywords": [
@@ -18,7 +18,7 @@
     "accessible",
     "modern"
   ],
-  "author": "Anvith Shetty <anvithshetty17@gmail.com>",
+  "author": "Anvith Shetty",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -39,3 +39,4 @@
   "devDependencies": {},
   "dependencies": {}
 }
+
